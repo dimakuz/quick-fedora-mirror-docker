@@ -1,10 +1,11 @@
-FROM fedora:28
+FROM alpine
 
 LABEL image=dimakuz/quick-fedora-mirror
 MAINTAINER Dima Kuznetsov "dmitrykuzn@gmail.com"
 
 RUN \
-	dnf install -y git zsh rsync hostname && \
+	apk update && \
+	apk add git zsh rsync bash coreutils && \
 	git clone https://pagure.io/quick-fedora-mirror.git
 
 ENV CHECKIN_SITE=change-me
